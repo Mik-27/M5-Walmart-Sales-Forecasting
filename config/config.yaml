@@ -1,0 +1,76 @@
+# Configuration for M5 Walmart Sales Forecasting Project
+
+# Data Configuration
+data:
+    raw_data_path: "data/raw/"
+    processed_data_path: "data/processed/"
+    calendar_file: "calendar.csv"
+    sales_file: "sales_train_validation.csv"
+    prices_file: "sell_prices.csv"
+    submission_file: "sample_submission.csv"
+
+# Model Configuration
+models:
+    sarima:
+        order: [2, 1, 1]
+        seasonal_order: [2, 1, 1, 42]
+        enforce_stationarity: false
+        enforce_invertibility: false
+
+    lstm:
+        sequence_length: 12
+        hidden_units: 50
+        epochs: 100
+        batch_size: 32
+        validation_split: 0.1
+        optimizer: "adam"
+        loss: "mse"
+
+    prophet:
+        weekly_seasonality: true
+        yearly_seasonality: true
+        daily_seasonality: false
+        changepoint_prior_scale: 0.05
+        seasonality_prior_scale: 10.0
+
+# Feature Engineering
+features:
+    lag_features: [1, 2, 3, 7, 14, 28]
+    rolling_windows: [7, 14, 28]
+    seasonal_features: true
+    price_features: true
+    event_features: true
+
+# Training Configuration
+training:
+    test_size: 100 # Last 100 days for testing
+    validation_size: 100 # 100 days before test for validation
+    random_state: 42
+
+# Evaluation Configuration
+evaluation:
+    metrics: ["rmse", "mae", "mape", "smape"]
+    confidence_intervals: true
+
+# Visualization Configuration
+visualization:
+    figure_size: [12, 8]
+    dpi: 300
+    style: "seaborn"
+    color_palette: "Set2"
+    save_plots: true
+    output_format: "png"
+
+# Output Configuration
+output:
+    models_path: "output/models/"
+    predictions_path: "output/predictions/"
+    figures_path: "output/figures/"
+    reports_path: "output/reports/"
+
+# Logging Configuration
+logging:
+    level: "INFO"
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    log_to_file: true
+    log_file: "output/logs/m5_forecasting.log"
