@@ -52,10 +52,23 @@ M5 Walmart Sales Forecasting/
     └── figures/                 # Generated plots
 ```
 
+## Technology Stack
+
+-   **Python 3.8+**: Core programming language
+-   **PyTorch**: Deep learning framework for LSTM implementation
+-   **Scikit-learn**: Machine learning utilities and preprocessing
+-   **Statsmodels**: Statistical modeling for SARIMA
+-   **Prophet**: Facebook's time series forecasting
+-   **Pandas**: Data manipulation and analysis
+-   **NumPy**: Numerical computing
+-   **Matplotlib/Seaborn/Plotly**: Data visualization
+-   **YAML**: Configuration management
+-   **Jupyter**: Interactive analysis and experimentation
+
 ## Features
 
 -   **Production-Ready Architecture**: Modular design with proper separation of concerns
--   **Multiple Forecasting Models**: SARIMA, LSTM, and Prophet with comprehensive comparison
+-   **Multiple Forecasting Models**: SARIMA, LSTM (PyTorch), and Prophet with comprehensive comparison
 -   **Advanced Feature Engineering**: Lag features, rolling statistics, temporal features, price features, and event indicators
 -   **Comprehensive Evaluation**: Statistical validation, residual analysis, and business impact metrics
 -   **Business Impact Analysis**: Revenue forecasting, inventory optimization, and operational cost analysis
@@ -209,9 +222,10 @@ results = evaluator.compare_models(
 
 ### LSTM (Long Short-Term Memory)
 
+-   **Framework**: Implemented using PyTorch for deep learning capabilities
 -   **Best for**: Complex patterns and multivariate time series with rich features
--   **Features**: Sequence-to-sequence prediction, handles multiple input features, non-linear pattern recognition
--   **Pros**: Captures complex relationships, handles multiple features, good for long sequences
+-   **Features**: Sequence-to-sequence prediction, handles multiple input features, non-linear pattern recognition, GPU acceleration support
+-   **Pros**: Captures complex relationships, handles multiple features, good for long sequences, scalable with PyTorch
 -   **Cons**: Requires more data, longer training time, less interpretable
 
 ### Prophet
